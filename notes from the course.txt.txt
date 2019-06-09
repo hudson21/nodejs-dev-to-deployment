@@ -1,0 +1,106 @@
+First note
+
+======================================= Blocking Model vs Non-Blocking ====================================
+Blocking: 
+    + Upload the file
+    + Display the file
+    + So something else
+
+Non-Blocking:
+    + Upload the file
+    + When it's done do something else
+    + Do something else
+
+C:\mongoDB\bin
+mongod --directoryperdb --dbpath C:\mongoDB\data\db --logpath C:\mongoDB\log\mongo.log --logappend --install
+
+net start MongoDB
+
+======================================= MLab ====================================
+
+mLab Credentials:
+    username: hudson21
+    password: 9512Gold@=carlosmigu27
+
+heroku Credentials:
+    username: carlosmigu27@hotmail.com 
+    password: 9512Gold@=
+
+======================================= First Project Vidjot Tech ====================================
+npm install --save express
+npm install -g nodemon
+
+Command to see the global dependencies installed in your OS
+npm root -g
+
+======================================= Express Middleware ====================================
+Middlewares are executed in every request and response is being made to the server
+
+======================================= Templates Engines ====================================
+express-handlebars
+npm install --save express-handlebars
+
+======================================= Mongoose ====================================
+npm install --save mongoose
+
+//Map global promised - get rid of warning
+mongoose.Promise = global.Promise;
+
+npm install --save body-parser
+npm install --save method-override //To handle put requests in the forms
+
+Method Override Settings:
+    const methodOverride = require('method-override');
+    app.use(methodOverride('_method'));
+
+======================================= Flash Messaging ====================================
+npm install --save express-session connect-flash
+
+express-session settings:
+    app.use(session({
+        secret: 'khdlfkjahslfjhsalkhdflkhdsj',
+        resave: true,
+        saveUninitialized: true
+    }));
+
+------> Bcrypt js
+npm install --save bcryptjs
+npm install --save passport passport-local
+
+======================================= Deployment of the first app ====================================
+add a start script in the package.json
+
+set the port on app.js
+    const port = process.env.port || 5000;
+
+set the database in a production environment
+    create a mongodb deployment in mlab
+    create a user in the database of mlab
+
+Install Heroku toolbelt
+
+Use Heroku in the standard command prompt of windows as administrator
+    Inside of the project run 
+        heroku login
+        heroku create
+        heroku git:remote -a floating-eyrie-63276
+
+======================================= Change the Domain name ====================================
+namecheap
+https://floating-eyrie-63276.herokuapp.com/ideas
+
+rm -rf .git
+
+======================================= The Story Books Application ====================================
+npm install --save express mongoose
+
+Problems with npm --> Solution:
+    npm config set registry http://registry.npmjs.org/
+ 
+Heroku Setup:
+    heroku login
+
+The heroku login is pending in the hp computer
+
+
+
