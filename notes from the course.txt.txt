@@ -102,5 +102,24 @@ Heroku Setup:
 
 The heroku login is pending in the hp computer
 
+*********YOU NEED TO MAKE THE SETUP WITH HEROKU TO UPLOAD YOUR APP TO DEPLOYMENT**************
+
+Set the Google OAuth API 
+
+https://console.cloud.google.com/getting-started?pli=1
+
+Create a project
+Look the option of "API's and Services"
+    Enable API's and Services
+    Google+ API
+        CLick on Enable
+    Inside of Google+ API Click on credentials
+        Create Credentials --> OAuth client ID
+        Create a Consent for the Google OAuth
+        Select Web Application
+        Autorized Javascript Origins: http://localhost:5000 
+        Autorized Redirect URIs: http://localhost:5000/auth/google/callback
+
+
 
 
