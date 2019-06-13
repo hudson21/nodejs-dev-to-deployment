@@ -120,6 +120,10 @@ Look the option of "API's and Services"
         Autorized Javascript Origins: http://localhost:5000 
         Autorized Redirect URIs: http://localhost:5000/auth/google/callback
 
+npm install --save passport passport-google-oauth20
+
+https://enigmatic-waters-66148.herokuapp.com/
+
 
 
 
