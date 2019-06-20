@@ -2,7 +2,13 @@ const Story = require('../models/story');
 const User = require('../models/user');
 
 exports.getStories = (req, res, next) => {
-    res.render('stories/index');
+    Story.find({status: 'public'})
+        .populate('user')
+        .then(stories => {
+            res.render('stories/index', {
+                stories
+            });
+        });
 };
 
 exports.getAddStories = (req, res, next) => {
