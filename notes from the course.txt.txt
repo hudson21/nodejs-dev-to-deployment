@@ -124,6 +124,20 @@ npm install --save passport passport-google-oauth20
 
 https://enigmatic-waters-66148.herokuapp.com/
 
+========================================== Design Patterns ===============================================================
+
+The are related with the creation of objects
+
+1. Singleton Design Pattern: It is for having only one instance of that specific object
+    + It is a global interface
+    + There is only one instance of this object
+
+2. Factory Design Pattern: When you wanna have a factory that creates objects
+3. Abstract Factory Design Pattern: A factory that is a little bit more sophisticated 
+4. Builder Design Pattern: 
+5. Builder Designed Pattern Continued: 
+6. Prototype Design Pattern:
+
 
 
 
