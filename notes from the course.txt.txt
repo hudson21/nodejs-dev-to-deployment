@@ -124,7 +124,6 @@ npm install --save passport passport-google-oauth20
 
 https://enigmatic-waters-66148.herokuapp.com/
 
-========================================== Design Patterns ===============================================================
 
 The are related with the creation of objects
 
@@ -138,6 +137,12 @@ The are related with the creation of objects
 5. Builder Designed Pattern Continued: 
 6. Prototype Design Pattern:
 
+=======
+npm install --save express-session cookie-parser
+npm install --save express-handlebars
+npm install --save body-parser
+
+Look for ckeditorcdn
 
 
 
