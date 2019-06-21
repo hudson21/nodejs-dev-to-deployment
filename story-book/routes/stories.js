@@ -21,4 +21,10 @@ router.post('/', storiesController.postAddStory);
 //Edit Form Process 
 router.put('/:id', storiesController.putEditStoryForm);
 
+//Delete Story
+router.delete('/:id', storiesController.deleteStory);
+
+//Add Comment
+router.post('/comment/:id', storiesController.postAddComment);
+
 module.exports = router;

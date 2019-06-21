@@ -4,6 +4,7 @@ const User = require('../models/user');
 exports.getStories = (req, res, next) => {
     Story.find({status: 'public'})
         .populate('user')
+        .sort({date:'desc'})
         .then(stories => {
             res.render('stories/index', {
                 stories
@@ -41,6 +42,7 @@ exports.postAddStory = (req, res, next) => {
 exports.getSingleStory = (req, res, next) => {
     Story.findById(req.params.id)
     .populate('user')
+    .populate('comments.commentUser')
     .then(story => {
         res.render('stories/show', {
             story
@@ -51,9 +53,13 @@ exports.getSingleStory = (req, res, next) => {
 exports.getEditStoryForm = (req, res, next) => {
     Story.findById(req.params.id)
     .then(story => {
-        res.render('stories/edit', {
-            story
-        });
+        if (story.user.toString() !== req.user.id.toString()) {
+            res.redirect('/stories');
+        } else {
+            res.render('stories/edit', {
+                story
+            });
+        }
     }); 
 };
 
@@ -78,4 +84,27 @@ exports.putEditStoryForm = (req, res, next) => {
             res.redirect('/dashboard');
         })
     });    
+};
+
+exports.deleteStory = (req, res, next) => {
+    Story.remove({_id: req.params.id})
+    .then(() => {
+        res.redirect('/dashboard');
+    });
+};
+
+exports.postAddComment = (req, res, next) => {
+    Story.findOne({_id: req.params.id})
+    .then(story => {
+        const newComment = {
+            commentBody: req.body.commentBody,
+            commentUser: req.user.id
+        };
+
+        //Add to Comments array
+        story.comments.unshift(newComment); //It is going to add to the beginning
+        story.save().then(story => {
+            res.redirect(`/stories/show/${story.id}`);
+        });
+    });
 };
