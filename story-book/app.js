@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
@@ -22,7 +23,9 @@ const keys = require('./config/keys');
 //Handlebars Helpers
 const { 
     truncate,
-    stripTags
+    stripTags,
+    formatDate,
+    select
 } = require('./helpers/hbs');
 
 //Map global promises
@@ -41,11 +44,16 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//Method Override
+app.use(methodOverride('_method'));
+
 //Handlebars Middleware
 app.engine('handlebars', exphbs({
     helpers: {
         truncate,
-        stripTags
+        stripTags,
+        formatDate,
+        select
     },
     defaultLayout: 'main'
 }));

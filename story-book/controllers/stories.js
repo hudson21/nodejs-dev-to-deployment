@@ -37,3 +37,45 @@ exports.postAddStory = (req, res, next) => {
         res.redirect(`/stories/show/${story._id}`);
     });
 };
+
+exports.getSingleStory = (req, res, next) => {
+    Story.findById(req.params.id)
+    .populate('user')
+    .then(story => {
+        res.render('stories/show', {
+            story
+        });
+    });
+};
+
+exports.getEditStoryForm = (req, res, next) => {
+    Story.findById(req.params.id)
+    .then(story => {
+        res.render('stories/edit', {
+            story
+        });
+    }); 
+};
+
+exports.putEditStoryForm = (req, res, next) => {
+    Story.findById(req.params.id)
+    .then(story => {
+        let allowComments;
+
+        if (req.body.allowComments) {
+            allowComments = true;
+        } else {
+            allowComments = false;
+        }
+        
+        //New Values from the Form
+        story.title = req.body.title;
+        story.body = req.body.body;
+        story.status = req.body.status;
+        story.allowComments = allowComments;
+
+        story.save().then(story => {
+            res.redirect('/dashboard');
+        })
+    });    
+};

@@ -127,6 +127,8 @@ https://enigmatic-waters-66148.herokuapp.com/
 npm install --save express-session cookie-parser
 npm install --save express-handlebars
 npm install --save body-parser
+npm install --save moment
+npm install --save method-override
 
 Look for ckeditorcdn
 
