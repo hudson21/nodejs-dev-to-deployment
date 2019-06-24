@@ -12,6 +12,12 @@ router.get('/show/:id', storiesController.getSingleStory);
 //Add Story Form 
 router.get('/add', ensureAuthenticated, storiesController.getAddStories);
 
+//List Stories from a User
+router.get('/user/:userId', storiesController.getStoriesByUser);
+
+// Logged in users stories
+router.get('/my', ensureAuthenticated, storiesController.getMyStories);
+
 //Edit Story Form 
 router.get('/edit/:id', ensureAuthenticated, storiesController.getEditStoryForm);
 

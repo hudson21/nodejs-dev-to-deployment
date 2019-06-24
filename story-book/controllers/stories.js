@@ -44,9 +44,23 @@ exports.getSingleStory = (req, res, next) => {
     .populate('user')
     .populate('comments.commentUser')
     .then(story => {
-        res.render('stories/show', {
-            story
-        });
+        if (story.status == 'public') {
+            res.render('stories/show', {
+                story
+            });
+        } else {
+            if (req.user) {
+                if (req.user.id.toString() === story.user._id.toString()) {
+                    res.render('stories/show', {
+                        story
+                    });
+                } else {
+                    res.redirect('/stories');
+                }
+            } else {
+                res.redirect('/stories');
+            }
+        }
     });
 };
 
@@ -105,6 +119,26 @@ exports.postAddComment = (req, res, next) => {
         story.comments.unshift(newComment); //It is going to add to the beginning
         story.save().then(story => {
             res.redirect(`/stories/show/${story.id}`);
+        });
+    });
+};
+
+exports.getStoriesByUser = (req, res, next) => {
+    Story.find({user: req.params.userId, status: 'public'})
+    .populate('user')
+    .then(stories => {
+        res.render('stories/index',{
+            stories
+        });
+    });
+};
+
+exports.getMyStories = (req, res, next) => {
+    Story.find({user: req.user.id})
+    .populate('user')
+    .then(stories => {
+        res.render('stories/index',{
+            stories
         });
     });
 };

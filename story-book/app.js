@@ -33,7 +33,7 @@ const {
 mongoose.Promise = global.Promise;
 
 //Mongoose Connect 
-mongoose.connect(keys.mongoURILocalhost, {
+mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true
 })
 .then(() => console.log('MongoDB Connected'))
